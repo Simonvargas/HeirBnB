@@ -28,6 +28,7 @@ This is the starter for the Flask React project.
 
    ```bash
    flask db upgrade
+   
    ```
 
    ```bash
