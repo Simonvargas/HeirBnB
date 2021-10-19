@@ -9,7 +9,7 @@ const SplashPage = () => {
     
 
     return (
-        <div>
+        <div className={styles.overallContainer}>
             <div className={styles.container}>
              
 

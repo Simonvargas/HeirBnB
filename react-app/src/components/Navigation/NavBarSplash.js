@@ -38,14 +38,14 @@ const NavBarSplash = () => {
                 <div>
                     <button className={styles.btn1} onClick={show}>Log In</button>
 
-                    <Rodal closeOnEsc={true} clasName={styles.ro} showCloseButton={false} animation='rotate' visible={showModal1} onClose={hide}>
+                    <Rodal closeOnEsc={true} clasName={styles.ro} showCloseButton={false} animation='zoom' visible={showModal1} onClose={hide}>
             <div className={styles.rodal}>
               <LoginForm showModal1={showModal1} setShowModal2={setShowModal2} setShowModal1={setShowModal1}/>
             </div>
           </Rodal>
 
                     <button className={styles.btn2} onClick={show1}>Sign Up</button>
-                    <Rodal showCloseButton={false} animation='rotate' visible={showModal2} onClose={hide1}>
+                    <Rodal showCloseButton={false} animation='zoom' visible={showModal2} onClose={hide1}>
                         <div className={styles.rodal}>
                             <SignUpForm showModal2={showModal2} setShowModal2={setShowModal2} setShowModal1={setShowModal1} />
                         </div>
