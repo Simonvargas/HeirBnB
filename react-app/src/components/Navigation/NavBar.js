@@ -3,7 +3,7 @@ import { useSelector} from 'react-redux'
 import NavBarSplash from './NavBarSplash'
 import NavBarLog from './NavBarLog'
 
-const Home = () => {
+const NavBar = () => {
     const user = useSelector(state => state.session.user)
 
   return (
@@ -13,5 +13,5 @@ const Home = () => {
   )
 };
 
-export default Home;
+export default NavBar;
 

@@ -10,7 +10,7 @@ const Home = () => {
   return (
       <>
       <NavBar />
-       {(user) ? <HomePage /> : <SplashPage />}
+      {(user) ? <HomePage /> : <SplashPage />}
        </>
   )
 };
