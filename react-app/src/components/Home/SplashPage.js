@@ -2,19 +2,25 @@ import React, { useState } from 'react';
 import styles from './splash.module.css'
 import Rodal from 'rodal';
 import 'rodal/lib/rodal.css';
-import LoginForm from '../auth/LoginForm';
-import SignUpForm from '../auth/SignUpForm';
 
 const SplashPage = () => {
-    
+
 
     return (
         <div className={styles.overallContainer}>
             <div className={styles.container}>
-             
-
-
+                <div className={styles.searchContainer}>
+                    <h1 className={styles.h2}>Welcome to HeirBnb. Search your next travel destination</h1>
+                    <div className={styles.cont}>
+                        <input placeholder='Search for spot...'type="search" className={styles.search} />
+                        <button class={styles.searchBtn} type="submit">
+                            <span>Search</span>
+                        </button>
+                    </div>
+                </div>
+                
             </div>
+
 
         </div>
     )
