@@ -7,6 +7,7 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
 import Home from './components/Home/Home';
+import Listings from './components/Listings/listings'
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -32,6 +33,9 @@ function App() {
       
         <Route path='/' exact={true}>
           <Home />
+        </Route>
+        <Route path='/listings'>
+        <Listings />
         </Route>
       </Switch>
     </BrowserRouter>

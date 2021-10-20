@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import Rodal from 'rodal';
 import 'rodal/lib/rodal.css';
-import styles from './splash.module.css'
+import styles from './logged.module.css'
 import { logout } from '../../store/session';
 import { useDispatch } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 const NavBarSplash = () => {
 
     const [showModal1, setShowModal1] = useState(false);
@@ -39,8 +40,9 @@ const NavBarSplash = () => {
                     <h2>Find Your Next Adventure</h2>
                 </div>
                 <div>
-              <button className={styles.btn1}>Profile</button>
-              <button className={styles.btn1} onClick={onLogout}>Logout</button>
+              <button className={styles.btn3}>Host a spot</button>
+             <button className={styles.btn2}> <NavLink className={styles.link} to='/listings'>Listings</NavLink></button>
+              <button className={styles.btn2} onClick={onLogout}>Logout</button>
               </div>
             </div>
 
