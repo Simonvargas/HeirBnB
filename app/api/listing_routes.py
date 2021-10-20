@@ -11,7 +11,7 @@ listing_routes = Blueprint('listings', __name__)
 
 @listing_routes.route('/', methods=['GET'])
 def get_projects():
-    listing = Listing.query.all()
+    listings = Listing.query.all()
     return {'Listings' : [listing.to_dict() for listing in listings]}
 # 'watchs' : [watch.to_dict() for watch in watchs]
 

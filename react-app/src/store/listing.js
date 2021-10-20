@@ -7,30 +7,30 @@ const LOAD_ONE = 'projects/LOAD_ONE'
 
 // action creators
 
-const addListing = (Listing) => ({
+const addListing = (listing) => ({
     type: ADD_LISTING,
-    Listing
+    listing
 });
 
 
-const loadListing = (Listing) => ({
+const loadListing = (listings) => ({
     type: LOAD_LISTING,
-    Listing
+    listings
 });
 
-const loadOne = (Listing) => ({
+const loadOne = (listing) => ({
     type: LOAD_ONE,
-    Listing
+    listing
 })
 
-const updateListing = (Listing) => ({
+const updateListing = (listing) => ({
     type: UPDATE_LISTING,
-    Listing
+    listing
 });
 
-const deleteListing = (ListingId) => ({
+const deleteListing = (listingId) => ({
     type: DELETE_LISTING,
-    ListingId
+    listingId
 });
 
 
@@ -49,12 +49,12 @@ export const createListing = (user_id, title, price, address, city, state, count
     return new_listing;
 }
 
-// export const getProjects = () => async (dispatch) => {
-//     const res = await fetch(`/api/auth/projects`)
-//     const allProjects = await res.json();
-//     dispatch(loadProject(allProjects));
-//     return allProjects
-//   }
+export const getListings = () => async (dispatch) => {
+    const res = await fetch(`/api/listings`)
+    const allListings = await res.json();
+    dispatch(loadListing(allListings));
+    return allListings
+  }
 
 // export const getOneProject = (id) => async (dispatch) => {
 //     // console.log('id', id)
@@ -112,15 +112,16 @@ const ListingReducer = (state = initialState, action) => {
         case ADD_LISTING:
             return {
                 ...state,
-                [action.Listing.id]: action.listing
+                [action.listing.id]: action.listing
             }
         case LOAD_LISTING:
-            // console.log('projectjh', action.project)
+            console.log('hello', action.listing)
             const all = {...state};
-            action.project.Projects.forEach((oneProject) => {
-                all[oneProject.id] = oneProject;
+            action.listings.Listings.forEach((oneListing) => {
+                all[oneListing.id] = oneListing;
             });
             return all;
+            // return {...state, ...action.listings}
         case LOAD_ONE:
                 return {
                     ...action.project

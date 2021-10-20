@@ -7,7 +7,9 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
 import Home from './components/Home/Home';
-import Listings from './components/Listings/Listings'
+import Listings from './components/Listings/listings';
+import Details from './components/Details/Details';
+
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -26,10 +28,8 @@ function App() {
 
   return (
     <BrowserRouter>
+
       <Switch>
-        <ProtectedRoute path='/users' exact={true} >
-          <UsersList/>
-        </ProtectedRoute>
       
         <Route path='/' exact={true}>
           <Home />
@@ -37,7 +37,13 @@ function App() {
         <Route path='/listings'>
         <Listings />
         </Route>
+
+        <Route path='/listings/:id' exact={true}>
+          <Details />
+        </Route>
+
       </Switch>
+
     </BrowserRouter>
   );
 }
