@@ -50,7 +50,7 @@ const Details = () => {
             <ListingNavBar />
             <div className={styles.container}>
                <div className={styles.firstContent} > <h1>{listing.title}</h1>
-               {user.id === listing.user_id ? <div>
+               {user.id == listing.user_id ? <div>
                    <button onClick={deleteOne} className={styles.btn2}>Delete Listing</button>
                    <button onClick={showForm} className={styles.btn2}>Update</button>
 

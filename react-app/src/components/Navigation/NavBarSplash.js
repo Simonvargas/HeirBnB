@@ -4,7 +4,7 @@ import 'rodal/lib/rodal.css';
 import LoginForm from '../auth/LoginForm';
 import SignUpForm from '../auth/SignUpForm';
 import styles from './splash.module.css'
-
+import { NavLink } from 'react-router-dom';
 const NavBarSplash = () => {
 
     const [showModal1, setShowModal1] = useState(false);
@@ -30,7 +30,7 @@ const NavBarSplash = () => {
         <nav className={styles.nav}>
             <div className={styles.btnContainer}>
                 <div>
-                    <h2>HeirBnB</h2>
+                <NavLink style={{color : 'black', textDecoration: 'none'}} to='/listings' ><h2>HeirBnB</h2></NavLink>
                 </div>
                 <div>
                     <h2>Find Your Next Adventure</h2>

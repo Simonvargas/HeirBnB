@@ -67,6 +67,7 @@ const ListingNavBar = () => {
     }
 
     const dispatch = useDispatch()
+    
     const onLogout = async (e) => {
         await dispatch(logout());
         history.push('/')
@@ -75,7 +76,7 @@ const ListingNavBar = () => {
         <nav className={styles.nav}>
             <div className={styles.btnContainer}>
                 <div>
-                    <h2>HeirBnB</h2>
+                <NavLink style={{color : 'black', textDecoration: 'none'}} to='/listings' ><h2>HeirBnB</h2></NavLink>
                 </div>
                 <div>
                     <input 
@@ -96,7 +97,7 @@ const ListingNavBar = () => {
           </Rodal>
 
              <button className={styles.btn2}> <NavLink className={styles.link} to='/listings'>Listings</NavLink></button>
-              <button className={styles.btn2} onClick={onLogout}>Logout</button>
+              <Link to='/'><button className={styles.btn2} onClick={onLogout}>Logout</button></Link>
               {/* <i class="fas fa-id-badge"></i> */}
               </div>
             </div>
