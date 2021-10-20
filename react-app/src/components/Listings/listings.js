@@ -21,12 +21,12 @@ const Listings = () => {
       <div className={styles.overall}>
       {allListings.map(listing => {
           return (
-              <Link className={styles.link} to={`/listings/${listing.id}`}>
+              <Link className={styles.link} to={`/listing/${listing.id}`}>
               <div className={styles.listingContainer}>
                   <img className={styles.img} src={listing.image}></img>
                   <div className={styles.words}>
 
-                  <p><b>{listing.address}</b> <span className={styles.span}>$ {listing.price} / Day</span></p>   
+                  <p><b>{listing.title}</b> <span className={styles.span}>$ {listing.price} / Day</span></p>   
                   </div>
                   <p className={styles.address}>{listing.city}, {listing.state}, {listing.country}</p>            
                   </div>

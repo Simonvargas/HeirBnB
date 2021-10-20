@@ -1,0 +1,52 @@
+.searchfield {
+    overflow-y: scroll;
+    position:absolute;
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    left: -80px;
+    right: 0;
+    text-align: center;
+    padding: 10px;
+    border: 1px solid black;
+    text-align: left;
+    overflow: scroll;
+    height: 200px;
+    z-index: 7;
+    background-color: white;
+}
+
+.searchfield-container {
+    border-bottom: 1px solid #E3E9ED;
+}
+
+.searchfield-container:hover {
+    background-color: rgba(221, 190, 190, 0.1);
+}
+
+.search-cover {
+    display: flex;
+}
+
+.search-link {
+    text-decoration: none;
+    color: black;
+    padding: 10px 2px;
+    margin: 0;
+}
+
+.search-link:hover {
+    color: grey;
+}
+
+
+/* .search-link:visited{
+    text-decoration: none;
+    color: black;
+}
+
+.searchfield-container Link{
+    text-decoration: none;
+    color: black;
+
+} */

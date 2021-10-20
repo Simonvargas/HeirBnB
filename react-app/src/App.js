@@ -34,12 +34,13 @@ function App() {
         <Route path='/' exact={true}>
           <Home />
         </Route>
+        
         <Route path='/listings'>
         <Listings />
         </Route>
 
-        <Route path='/listings/:id' exact={true}>
-          <Details />
+        <Route path='/listing/:id'>
+        <Details />
         </Route>
 
       </Switch>

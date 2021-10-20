@@ -49,30 +49,33 @@ def create_project():
     return {'error' : 'Invalid request'}
 
 
-# @listing_routes.route('/delete/<int:id>', methods=['DELETE'])
-# @login_required
-# def delete_project(id):
-#     project = Project.query.get(id)
-#     db.session.delete(project)
-#     db.session.commit()
-#     return {}, 200
+@listing_routes.route('/delete/<int:id>', methods=['DELETE'])
+@login_required
+def delete_project(id):
+    listing = Listing.query.get(id)
+    db.session.delete(listing)
+    db.session.commit()
+    return {}, 200
 
 
-# @listing_routes.route('/edit/<int:id>', methods=['PUT'])
-# @login_required
-# def update_project(id):
-#     res = Project.query.get(id)
-#     form = ProjectForm()
+@listing_routes.route('/edit/<int:id>', methods=['PUT'])
+@login_required
+def update_project(id):
+    res = Listing.query.get(id)
+    form = listing_form.ListingForm()
 
-#     res.user_id = form.data['user_id']
-#     res.category_id = form.data['category_id']
-#     res.name = form.data['name']
-#     res.image = form.data['image']
-#     res.details = form.data['details']
-#     res.funding_goal = form.data['funding_goal']
-#     db.session.commit()
-#     return res.to_dict()
-#     # return {'error' : 'Invalid request'}
+    res.user_id = form.data['user_id']
+    res.title = form.data['title']
+    res.price = form.data['price']
+    res.address = form.data['address']
+    res.city = form.data['city']
+    res.state = form.data['state']
+    res.country = form.data['country']
+    res.image = form.data['image']
+    res.description = form.data['description']
+    db.session.commit()
+    return res.to_dict()
+    # return {'error' : 'Invalid request'}
 
 
 # @listing_routes.route('/editfunds/<int:id>', methods=['PUT'])

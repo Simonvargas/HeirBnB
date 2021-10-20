@@ -56,51 +56,28 @@ export const getListings = () => async (dispatch) => {
     return allListings
   }
 
-// export const getOneProject = (id) => async (dispatch) => {
-//     // console.log('id', id)
-//     const res = await fetch(`/api/projects/${id}`)
-
-//     if (res.ok) {
-//         const oneProject = await res.json()
-//         dispatch(loadOne(oneProject))
-//         return oneProject
-//     }
-// }
 
 
-// export const editProject = (user_id, category_id, name, image, details, funding_goal, id) => async (dispatch) => {
-//     const response = await fetch(`/api/projects/edit/${id}`, {
-//         method: 'PUT',
-//         headers: {'Content-Type': 'application/json'},
-//         body: JSON.stringify({user_id, category_id, name, image, details, funding_goal}),
-//     });
-//     if(!response.ok) throw response
-//     const editedProject = await response.json();
-//     dispatch(updateProject(editedProject));
-//     return editedProject;
-// }
+export const updateOneListing = (user_id, title, price, address, city, state, country, image, description, id) => async (dispatch) => {
+    const response = await fetch(`/api/listings/edit/${id}`, {
+        method: 'PUT',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({user_id, title, price, address, city, state, country, image, description}),
+    });
+    if(!response.ok) throw response
+    const editedListing = await response.json();
+    dispatch(updateListing(editedListing));
+    return editedListing;
+}
 
 
-// export const editProjectFunding = (funding_raised, backers, id) => async (dispatch) => {
-//     console.log('backers', backers)
-//     const response = await fetch(`/api/projects/editfunds/${id}`, {
-//         method: 'PUT',
-//         headers: {'Content-Type': 'application/json'},
-//         body: JSON.stringify({funding_raised, backers}),
-//     });
-//     if(!response.ok) throw response
-//     const editedProject = await response.json();
-//     dispatch(updateProject(editedProject));
-//     return editedProject;
-// }
-
-// export const removeProject = (id) => async (dispatch) => {
-//     const res = await fetch(`/api/projects/delete/${id}`, {
-//         method : 'DELETE',
-//     });
-//     dispatch(deleteProject(id))
-//     return res
-// }
+export const deleteOneListing = (id) => async (dispatch) => {
+    const res = await fetch(`/api/listings/delete/${id}`, {
+        method : 'DELETE',
+    });
+    dispatch(deleteListing(id))
+    return res
+}
 
 
 const initialState = {
@@ -129,12 +106,12 @@ const ListingReducer = (state = initialState, action) => {
         case UPDATE_LISTING:
             return {
                 ...state,
-                [action.project.id]: action.project
+                [action.listing.id]: action.listing
             }
         case DELETE_LISTING:{
            const newState = {...state}
-           console.log('deleted12', newState[action.ProjectId] )
-           delete newState[action.projectId];
+        //    console.log('deleted12', newState[action.ProjectId] )
+           delete newState[action.listingId];
            return newState
         }
 
