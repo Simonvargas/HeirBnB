@@ -10,7 +10,7 @@ const SplashPage = () => {
         <div className={styles.overallContainer}>
             <div className={styles.container}>
                 <div className={styles.searchContainer}>
-                    <h1 className={styles.h2}>Welcome to HeirBnb. Search your next travel destination</h1>
+                    <h1 className={styles.h2}>Welcome to HeirBnb. Search your next travel destination!</h1>
                     <div className={styles.cont}>
                         <input placeholder='Search for spot...'type="search" className={styles.search} />
                         <button class={styles.searchBtn} type="submit">

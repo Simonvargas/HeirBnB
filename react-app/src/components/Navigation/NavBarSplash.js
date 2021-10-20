@@ -36,7 +36,7 @@ const NavBarSplash = () => {
                     <h2>Find Your Next Adventure</h2>
                 </div>
                 <div>
-                    <button className={styles.btn1} onClick={show}>Log In</button>
+                    <button className={styles.btn2} onClick={show}>Log In</button>
 
                     <Rodal closeOnEsc={true} clasName={styles.ro} showCloseButton={false} animation='zoom' visible={showModal1} onClose={hide}>
             <div className={styles.rodal}>

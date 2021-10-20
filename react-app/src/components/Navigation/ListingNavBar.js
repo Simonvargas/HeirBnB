@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import Rodal from 'rodal';
 import 'rodal/lib/rodal.css';
-import styles from './logged.module.css'
+import styles from './ListingNavBar.module.css'
 import { logout } from '../../store/session';
 import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import AddListing from '../AddListing/AddListing';
+import { useHistory } from 'react-router';
 
-
-const NavBarSplash = () => {
-
+const ListingNavBar = () => {
+    const history = useHistory()
     const [showModal1, setShowModal1] = useState(false);
     const [showModal2, setShowModal2] = useState(false)
 
@@ -25,6 +25,7 @@ const NavBarSplash = () => {
     const dispatch = useDispatch()
     const onLogout = async (e) => {
         await dispatch(logout());
+        history.push('/')
       };
     return (
         <nav className={styles.nav}>
@@ -33,7 +34,7 @@ const NavBarSplash = () => {
                     <h2>HeirBnB</h2>
                 </div>
                 <div>
-                    <h2>Find Your Next Adventure</h2>
+                    <input className={styles.input} placeholder='Search for a spot'></input> <i class="fas fa-search fa-lg"></i>
                 </div>
                 <div>
               <button className={styles.btn3} onClick={show}>Host a spot</button>
@@ -46,6 +47,7 @@ const NavBarSplash = () => {
 
              <button className={styles.btn2}> <NavLink className={styles.link} to='/listings'>Listings</NavLink></button>
               <button className={styles.btn2} onClick={onLogout}>Logout</button>
+              {/* <i class="fas fa-id-badge"></i> */}
               </div>
             </div>
 
@@ -54,4 +56,4 @@ const NavBarSplash = () => {
     );
 }
 
-export default NavBarSplash;
+export default ListingNavBar;
