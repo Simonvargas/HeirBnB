@@ -2,21 +2,24 @@ import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import {  Link } from 'react-router-dom';
 import styles from './AddListing.module.css'
+import { createListing } from '../../store/listing'
 
-function AddListing({setShowModal, showModal}) {
-    const [name, setName] = useState('')
+function AddListing({setShowModal1, showModal}) {
+    const [title, setTitle] = useState('')
+    const [price, setPrice] = useState('')
+    const [address, setAddress] = useState('')
+    const [city, setCity] = useState('')
+    const [state, setState] = useState('')
+    const [country, setCountry] = useState('US')
     const [image, setImage] = useState('')
-    const [details, setDetails] = useState('')
-    const [categoryId, setCategory] = useState(1)
-    const [funding, setFunding] = useState('')
-    const [raised, setRaised] = useState(0)
-    const [backers, setBackers] = useState(0)
+    const [description, setDescription] = useState('')
+   
 // 
     const [errors, setErrors] = useState([])
 
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
-    const hostId = sessionUser?.id
+    const user_id = sessionUser?.id
     
     useEffect(() => {
       const data = []
@@ -24,39 +27,33 @@ function AddListing({setShowModal, showModal}) {
         setErrors(data)
    }}, [showModal])
     
-    // const projectCreate = async (e) => {
-    //      e.preventDefault()
-    //      const data = []
-    //      if (name === '') {
-    //        data.push('Name Field is empty')
-    //      } 
-    //      if (image === '') {
-    //        data.push('Image field is empty')
-    //      } 
-    //      if (details === '')  {
-    //       data.push('Description field is empty')
-    //      }
-    //      if (funding === '' || funding < 1 || funding.toString()[0] == 0) {
-    //        data.push('Amount funding has to be greater than 0') 
-    //      } 
-    //      if (name.length > 50) {
-    //        data.push('Title cannot be longer than 50 characters')
-    //      }
-    //      if (details.length > 1000) {
-    //        data.push('details cannot be longer than 1000 characters')
-    //      }
-    //      setErrors(data)
-    //      if (data.length === 0) {
-    //      await dispatch(project Actions.createProject(hostId, categoryId, name, image, details, funding, raised, backers))
-    //      setShowModal(false)
-    //      setName('')
-    //      setImage('')
-    //      setDetails('')
-    //      setCategory(1)
-    //      setFunding('')
-    //      }
+    const listingCreate = async (e) => {
+         e.preventDefault()
+         console.log(user_id)
+         const data = []
+         if (title === '') {
+           data.push('Title Field is empty')
+         } 
+         if (image === '') {
+           data.push('Image field is empty')
+         } 
+         if (description === '')  {
+          data.push('Description field is empty')
+         }
+         if (title.length > 50) {
+           data.push('Title cannot be longer than 50 characters')
+         }
+         if (description.length > 1000) {
+           data.push('details cannot be longer than 1000 characters')
+         }
+         setErrors(data)
+         if (data.length === 0) {
+         await dispatch(createListing(user_id, title, price, address, city, state, country, image, description))
+         setShowModal1(false)
+         
+         }
 
-    // }
+    }
   
   return  (
       
@@ -75,49 +72,50 @@ function AddListing({setShowModal, showModal}) {
         <h2 className={styles.h2}>Host a Spot</h2>
       <div className={styles.container3}>
         
-      {/* <input
-      placeholder={sessionUser.username}
+      <input
       className={styles.input}
       type='hidden'
-      value={hostId}
-      /> */}
+      value={user_id}
+      />
 
       <input
       placeholder='Title'
       className={styles.input}
       type='text'
-      value={name}
-      onChange={(e) => setName(e.target.value)}/>
+      value={title}
+      onChange={(e) => setTitle(e.target.value)}/>
 
      <input
       placeholder='Price'
       className={styles.input}
-      type='text'
-      value={name}
-      onChange={(e) => setName(e.target.value)}/>
+      type='number'
+      value={price}
+      onChange={(e) => setPrice(e.target.value)}/>
 
       <input 
-      placeholder='Image Url'
-      className={styles.input}
-      type='text'
-      value={image}
-      onChange={(e) => setImage(e.target.value)}/>
-         
-         <input 
       placeholder='Address'
       className={styles.input}
       type='text'
-      value={image}
-      onChange={(e) => setImage(e.target.value)}/>
+      value={address}
+      onChange={(e) => setAddress(e.target.value)}/>
+         
+ 
         <input 
       placeholder='City'
       className={styles.input}
       type='text'
-      value={image}
-      onChange={(e) => setImage(e.target.value)}/>
+      value={city}
+      onChange={(e) => setCity(e.target.value)}/>
 
     <input 
       placeholder='State'
+      className={styles.input}
+      type='text'
+      value={state}
+      onChange={(e) => setState(e.target.value)}/>
+
+    <input 
+      placeholder='Image Url'
       className={styles.input}
       type='text'
       value={image}
@@ -127,10 +125,10 @@ function AddListing({setShowModal, showModal}) {
       placeholder='details'
       className={styles.input}
       type='text'
-      value={details}
-      onChange={(e) => setDetails(e.target.value)}/>
+      value={description}
+      onChange={(e) => setDescription(e.target.value)}/>
       
-      <button  className={styles.btn} type='submit'>Host your Spot</button>
+      <button  onClick={listingCreate} className={styles.btn} type='submit'>Host your Spot</button>
       </div>
       </form>
       </div>

@@ -125,7 +125,8 @@ background-image: linear-gradient(315deg, #eb4511 0%, #b02e0c 74%);
     border: 1px solid #d3d3d3;
     box-shadow: 0 0 5px rgb(0 0 0 / 20%);
     transition: .2s ease;
-
+    outline: none;;
 }
 
 
+  

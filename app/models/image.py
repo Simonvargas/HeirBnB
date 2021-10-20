@@ -5,9 +5,12 @@ class Image(db.Model):
     __tablename__ = 'images'
 
     id = db.Column(db.Integer, primary_key=True)
-    listingId = db.Column(db.Integer, db.ForeignKey('lisiting.id'))
+    listingId = db.Column(db.Integer, db.ForeignKey('listings.id'))
     url = db.Column(db.Text)
-    images = db.relationship("Listings", back_populates="images")
+    
+    # images = db.relationship("Listings", back_populates="images")
+   
+   
     def to_dict(self):
         return{
             'id': self.id,

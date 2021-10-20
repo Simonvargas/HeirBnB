@@ -5,13 +5,13 @@ class Booking(db.Model):
     __tablename__ = 'bookings'
 
     id = db.Column(db.Integer, primary_key=True)
-    listingId = db.Column(db.Integer, db.ForeignKey('lisiting.id'))
+    listingId = db.Column(db.Integer, db.ForeignKey('listings.id'))
     userId = db.Column(db.Integer, db.ForeignKey('users.id'))
     startTime = db.Column(db.Date)
     endTime = db.Column(db.Date)
 
-    user = db.relationship("User", back_populates="userId")
-    images = db.relationship("Listing", back_populates="listings")
+    # users = db.relationship("User", backref="bookings")
+    # images = db.relationship("Listing", back_populates="listings")
 
     def to_dict(self):
         return{
