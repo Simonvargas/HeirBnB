@@ -9,7 +9,7 @@ import './Map.css'
 
 
 
-const Maps = ()  => {
+const MapOne = ({listing})  => {
 
     const dispatch = useDispatch()
     const user = useSelector(state => state.session.user)
@@ -52,15 +52,13 @@ const Maps = ()  => {
           defaultCenter={newYork.center}
           defaultZoom={newYork.zoom}
         >
-                {allListings?.map(home =>(
-                    <Link key={home.id} to={`/listing/${home.id}`} lat={home.latitude} lng={home.longitude}>
+                    <Link key={listing.id} to={`/listing/${listing.id}`} lat={listing.latitude} lng={listing.longitude}>
                         <Marker/>
                     </Link>
-                ))}
         </GoogleMapReact>
       </div>
     );
   
 }
 
-export default Maps;
+export default MapOne;

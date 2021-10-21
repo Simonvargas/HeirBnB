@@ -12,6 +12,8 @@ import EditForm from './EditForm';
 import Rodal from 'rodal';
 import 'rodal/lib/rodal.css';
 
+import MapOne from '../Maps/MapOne';
+
 const Details = () => {
     const user = useSelector(state => state.session.user)
     const [listing, setListing] = useState([])
@@ -92,6 +94,7 @@ const Details = () => {
 
                 </div>
             </div>
+            <MapOne listing={listing} />
         </div>
     )
 };
