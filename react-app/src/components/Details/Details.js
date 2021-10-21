@@ -93,7 +93,6 @@ const Details = () => {
                     </div>
 
                 </div>
-                <input className={styles.input} placeholder='Choose a date' type='datetime-local'></input>
 
             </div>
             <MapOne listing={listing} />

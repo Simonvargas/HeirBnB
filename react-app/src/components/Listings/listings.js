@@ -37,7 +37,6 @@ const Listings = () => {
           )
       })}
       </div>
-      <input type='file' />
       <Maps />
        </>
   )
