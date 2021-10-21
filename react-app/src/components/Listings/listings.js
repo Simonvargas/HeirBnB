@@ -4,6 +4,9 @@ import { getListings } from '../../store/listing';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from './listings.module.css'
 import { Link } from 'react-router-dom';
+
+import Maps from '../Maps/Maps';
+
 const Listings = () => {
     const dispatch = useDispatch()
     const user = useSelector(state => state.session.user)
@@ -18,6 +21,7 @@ const Listings = () => {
       <>
      
       <ListingNavBar />
+      {/* <Maps /> */}
       <div className={styles.overall}>
       {allListings.map(listing => {
           return (
@@ -34,6 +38,7 @@ const Listings = () => {
           )
       })}
       </div>
+      <Maps />
        </>
   )
 };
