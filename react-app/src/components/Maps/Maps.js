@@ -44,11 +44,11 @@ const Maps = ()  => {
           <img  className='pin' src="https://i.imgur.com/ot6w0Py.png" alt =""></img>
         </div>
       )
-
+     
     return (
       <div className='googleMap'>
         <GoogleMapReact
-          bootstrapURLKeys={{ key: process.MAPS }}
+          bootstrapURLKeys={{ key: process.env.REACT_APP_API_MAP }}
           defaultCenter={newYork.center}
           defaultZoom={newYork.zoom}
         >
