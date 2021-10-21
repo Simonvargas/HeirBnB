@@ -145,6 +145,7 @@ function AddListing({setShowModal1, showModal1}) {
       <div className={styles.container3}>
       <div className='upload-container'>
         <form>
+          <div>Upload your spot's image!</div>
           <input
           className='file'
             type='file'
