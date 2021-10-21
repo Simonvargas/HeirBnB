@@ -3,6 +3,8 @@ import styles from './splash.module.css'
 import Rodal from 'rodal';
 import 'rodal/lib/rodal.css';
 
+
+
 const SplashPage = () => {
 
 
@@ -20,7 +22,6 @@ const SplashPage = () => {
                 </div>
                 
             </div>
-
 
         </div>
     )

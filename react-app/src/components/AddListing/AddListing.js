@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {  Link } from 'react-router-dom';
 import styles from './AddListing.module.css'
 import { createListing } from '../../store/listing'
+import UploadPicture from './UploadPicture'
 
 function AddListing({setShowModal1, showModal}) {
     const [title, setTitle] = useState('')
@@ -12,7 +13,10 @@ function AddListing({setShowModal1, showModal}) {
     const [state, setState] = useState('')
     const [country, setCountry] = useState('US')
     const [image, setImage] = useState('')
+    const [url, setUrl] = useState('')
     const [description, setDescription] = useState('')
+    const [disableState, setDisableState] = useState(false)
+
    
 // 
     const [errors, setErrors] = useState([])
@@ -27,6 +31,9 @@ function AddListing({setShowModal1, showModal}) {
         setErrors(data)
    }}, [showModal])
     
+  
+
+
     const listingCreate = async (e) => {
          e.preventDefault()
          console.log(user_id)
@@ -48,13 +55,43 @@ function AddListing({setShowModal1, showModal}) {
          }
          setErrors(data)
          if (data.length === 0) {
-         await dispatch(createListing(user_id, title, price, address, city, state, country, image, description))
+          let image_url = url;
+          if (url !== 'https://i.imgur.com/BPOYKBx.png') {
+            const formData = new FormData()
+            formData.append('image', image)
+            const res = await fetch('/api/images/', {
+              method: "POST",
+              body: formData,
+            });
+            const x = await res.json()
+            image_url = x['url']
+          }
+         await dispatch(createListing(user_id, title, price, address, city, state, country, image_url, description))
          setShowModal1(false)
          
          }
-
     }
   
+    const updateImage = (e) => {
+      const file = e.target.files[0];
+  
+      if (!file) {
+          setUrl(url);
+          setImage(image);
+  
+      } else {
+          const ext = file.type.split('/')
+          const extensions = "pdf, png, jpg, jpeg, gif"
+          if (extensions.includes(ext[1])) {
+              setUrl(URL.createObjectURL(file))
+              setImage(file);
+              setDisableState(true);
+  
+          } else {
+              setErrors({filetype: 'Filetype not supported, please upload a pdf, png, jpg, jpeg, or gif file.'})
+          }
+      }
+    }
   return  (
       
   <div className={styles.container}>
@@ -62,7 +99,7 @@ function AddListing({setShowModal1, showModal}) {
       <div className={styles.photoContainer}>
       <Link  className={styles.link} to='/'>
       {/* <img alt='Project' src='https://i.imgur.com/giDqQ9u.png' className={styles.h1}></img> */}
-      </Link>gi
+      </Link>
       </div>
       <div className={styles.container2}>
     <form  className={styles.inputForm}>
@@ -71,7 +108,21 @@ function AddListing({setShowModal1, showModal}) {
       </div>
         <h2 className={styles.h2}>Host a Spot</h2>
       <div className={styles.container3}>
-        
+      <div className='upload-container'>
+        <form>
+          {/* <input
+            type='file'
+            // accept="image/png, image/gif, image/jpeg, image/pdf, image/jpg"
+            id="imgInp"
+            onChange={updateImage}
+            placeholder={image}
+            disabled={disableState}
+            style={{border:' solid 1px red'}}
+          /> */}
+          <input type='file' />
+          {/* <p>{errors?.filetype}</p> */}
+        </form>
+        </div>
       <input
       className={styles.input}
       type='hidden'
