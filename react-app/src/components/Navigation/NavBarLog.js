@@ -40,7 +40,7 @@ const NavBarSplash = () => {
 
               <Rodal closeOnEsc={true} clasName={styles.ro} showCloseButton={false} animation='zoom' visible={showModal1} onClose={hide}>
             <div className={styles.rodal}>
-              <AddListing showModal1={showModal1} setShowModal2={setShowModal2} setShowModal1={setShowModal1}/>
+              <AddListing showModal1={showModal1} showModal={showModal1}/>
             </div>
           </Rodal>
 

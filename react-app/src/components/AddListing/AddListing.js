@@ -4,7 +4,7 @@ import {  Link } from 'react-router-dom';
 import styles from './AddListing.module.css'
 import { createListing } from '../../store/listing'
 
-function AddListing({setShowModal1, showModal}) {
+function AddListing({setShowModal1, showModal1}) {
     const [title, setTitle] = useState('')
     const [price, setPrice] = useState('')
     const [address, setAddress] = useState('')
@@ -16,7 +16,8 @@ function AddListing({setShowModal1, showModal}) {
     const [longitude, setLongitude] = useState('')
     const [description, setDescription] = useState('')
 
-   
+    const [url, setUrl] = useState('')
+    const [disableState, setDisableState] = useState(false)
 // 
     const [errors, setErrors] = useState([])
 
@@ -25,10 +26,21 @@ function AddListing({setShowModal1, showModal}) {
     const user_id = sessionUser?.id
     
     useEffect(() => {
+     
       const data = []
-      if (showModal === false) {
-        setErrors(data)
-   }}, [showModal])
+      if (showModal1 === false) {
+        setTitle('')
+        setPrice('')
+        setAddress('')
+        setCity('')
+        setState('')
+        setImage('')
+        setLatitude('')
+        setLongitude('')
+        setDescription('')
+        const inputfile = document.querySelector('.file')
+        inputfile.value = ''
+   }}, [showModal1])
     
   
 
@@ -63,7 +75,21 @@ function AddListing({setShowModal1, showModal}) {
         }
          setErrors(data)
          if (data.length === 0) {
-         await dispatch(createListing(user_id, title, price, address, city, state, country, image, latitude, longitude, description))
+          let image_url = url;
+          console.log(url)
+          if (url !== 'https://i.imgur.com/BPOYKBx.png') {
+            const formData = new FormData()
+            formData.append('image', image)
+            const res = await fetch('/api/images/', {
+              method: "POST",
+              body: formData,
+            });
+            const x = await res.json()
+            console.log('res', x)
+            image_url = x['url']
+            
+          }
+         await dispatch(createListing(user_id, title, price, address, city, state, country, image_url, latitude, longitude, description))
          setTitle('')
          setPrice('')
          setAddress('')
@@ -74,7 +100,30 @@ function AddListing({setShowModal1, showModal}) {
          setLatitude('')
          setShowModal1(false)
          setDescription('')
+
+         const inputfile = document.querySelector('.file')
+         inputfile.value = ''
          }
+    }
+    const updateImage = (e) => {
+      const file = e.target.files[0];
+  
+      if (!file) {
+          setUrl(url);
+          setImage(image);
+  
+      } else {
+          const ext = file.type.split('/')
+          const extensions = "pdf, png, jpg, jpeg, gif"
+          if (extensions.includes(ext[1])) {
+              setUrl(URL.createObjectURL(file))
+              setImage(file);
+              setDisableState(true);
+  
+          } else {
+              setErrors({filetype: 'Filetype not supported, please upload a pdf, png, jpg, jpeg, or gif file.'})
+          }
+      }
     }
   
   
@@ -94,6 +143,20 @@ function AddListing({setShowModal1, showModal}) {
       </div>
         <h2 className={styles.h2}>Host a Spot</h2>
       <div className={styles.container3}>
+      <div className='upload-container'>
+        <form>
+          <input
+          className='file'
+            type='file'
+            accept="image/png, image/gif, image/jpeg, image/pdf, image/jpg"
+            id="imgInp"
+            onChange={updateImage}
+            placeholder={image}
+            // disabled={disableState}
+            
+          />
+        </form>
+        </div>
    
       <input
       className={styles.input}
@@ -154,7 +217,7 @@ function AddListing({setShowModal1, showModal}) {
     <input 
       placeholder='Image Url'
       className={styles.input}
-      type='text'
+      type='hidden'
       value={image}
       onChange={(e) => setImage(e.target.value)}/>
    

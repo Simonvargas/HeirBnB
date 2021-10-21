@@ -30,6 +30,10 @@ const SignUpForm = ({showModal2, setShowModal2, setShowModal1}) => {
     const data = []
     if (!showModal2)
     setErrors(data)
+    setUsername('')
+    setEmail('')
+    setPassword('')
+    setRepeatPassword('')
   }, [showModal2])
 
   const updateUsername = (e) => {

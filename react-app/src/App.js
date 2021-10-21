@@ -43,6 +43,10 @@ function App() {
         <Details />
         </ProtectedRoute>
 
+        <Route to='/test'>
+          <input type='file' />
+        </Route>
+
       </Switch>
 
     </BrowserRouter>

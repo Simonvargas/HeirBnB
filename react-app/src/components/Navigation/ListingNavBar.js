@@ -29,10 +29,10 @@ const ListingNavBar = () => {
         })
       }
 
-    window.addEventListener('click', e => {
-        e.preventDefault()
-        setSearchInput('')
-      })
+    // window.addEventListener('click', e => {
+    //     e.preventDefault()
+    //     setSearchInput('')
+    //   })
 
     const lists = filter(listings, searchInput)
     let searchbar = null
