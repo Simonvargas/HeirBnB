@@ -48,7 +48,7 @@ const MapOne = ({listing})  => {
     return (
       <div className='googleMap'>
         <GoogleMapReact
-          bootstrapURLKeys={{ key: 'AIzaSyAazqMgBT1LaW0AhyKQJgCmAX-x86GR9aA' }}
+          bootstrapURLKeys={{ key: process.MAPS }}
           defaultCenter={newYork.center}
           defaultZoom={newYork.zoom}
         >

@@ -38,7 +38,7 @@ const Maps = ()  => {
       console.error(error);
     }
   );
-
+    
     const Marker = ({ lat, lng }) => (
       <div className="mapMarker">
           <img  className='pin' src="https://i.imgur.com/ot6w0Py.png" alt =""></img>
@@ -48,7 +48,7 @@ const Maps = ()  => {
     return (
       <div className='googleMap'>
         <GoogleMapReact
-          bootstrapURLKeys={{ key: 'AIzaSyAazqMgBT1LaW0AhyKQJgCmAX-x86GR9aA' }}
+          bootstrapURLKeys={{ key: process.MAPS }}
           defaultCenter={newYork.center}
           defaultZoom={newYork.zoom}
         >
