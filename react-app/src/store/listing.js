@@ -37,11 +37,12 @@ const deleteListing = (listingId) => ({
 
 // thunk
 
-export const createListing = (user_id, title, price, address, city, state, country, image, description) => async (dispatch) => {
+export const createListing = (user_id, title, price, address, city, state, country, image, latitude, longitude, description) => async (dispatch) => {
+    console.log('lat', latitude)
     const res = await fetch(`/api/listings/create`, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({user_id, title, price, address, city, state, country, image, description }),
+        body: JSON.stringify({user_id, title, price, address, city, state, country, image, latitude, longitude, description }),
     });
     if(!res.ok) throw res
     const new_listing = await res.json();

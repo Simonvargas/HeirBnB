@@ -35,6 +35,5 @@ class Listing(db.Model):
             'longitude': self.longitude,
             'description': self.description,
             
-            
 
         }

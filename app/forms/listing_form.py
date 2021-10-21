@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, validators, IntegerField
+from wtforms import StringField, validators, IntegerField, FloatField
 
 
 class ListingForm(FlaskForm):
@@ -11,4 +11,6 @@ class ListingForm(FlaskForm):
     state = StringField('state', [ validators.DataRequired()])
     country = StringField('country', [validators.DataRequired()])
     image = StringField('image', [validators.DataRequired()])
+    latitude = FloatField('latitude')
+    longitude = FloatField('longitude')
     description = StringField('description', [validators.DataRequired()])

@@ -40,6 +40,8 @@ def create_project():
             state = form.data['state'],
             country = form.data['country'],
             image = form.data['image'],
+            latitude = form.data['latitude'],
+            longitude = form.data['longitude'],
             description = form.data['description'],
           
         )
