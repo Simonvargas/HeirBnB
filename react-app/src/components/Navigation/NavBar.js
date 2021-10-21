@@ -8,7 +8,7 @@ const NavBar = () => {
 
   return (
       <>
-       {(user) ? <NavBarLog /> : <NavBarSplash />}
+       {(user) ? '': <NavBarSplash />}
        </>
   )
 };

@@ -113,7 +113,7 @@ const SignUpForm = ({showModal2, setShowModal2, setShowModal1}) => {
           required={true}
         ></input>
       </div>
-      <button className={styles.btn} type='submit'>Sign Up</button>
+      <button onClick={onSignUp}className={styles.btn} type='submit'>Sign Up</button>
       <p className={styles.text}>Explore your dream vacations spots</p>
       </div>
       

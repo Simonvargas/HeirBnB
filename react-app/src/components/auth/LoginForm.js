@@ -84,7 +84,7 @@ const LoginForm = ({showModal1, setShowModal2, setShowModal1}) => {
           value={password}
           onChange={updatePassword}
         />
-        <button className={styles.btn} type='submit'>Login</button>
+        <button onClick={onLogin} className={styles.btn} type='submit'>Login</button>
         
         <p className={styles.p}><span className={styles.span}>Or</span></p>
         <button onClick={loginDemoUser} className={styles.btn2}>Log in as Demo User</button>

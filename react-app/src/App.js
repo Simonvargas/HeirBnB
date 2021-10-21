@@ -35,13 +35,13 @@ function App() {
           <Home />
         </Route>
         
-        <Route path='/listings'>
+        <ProtectedRoute path='/listings'>
         <Listings />
-        </Route>
+        </ProtectedRoute>
 
-        <Route path='/listing/:id'>
+        <ProtectedRoute path='/listing/:id'>
         <Details />
-        </Route>
+        </ProtectedRoute>
 
       </Switch>
 
