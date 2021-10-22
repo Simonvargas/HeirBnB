@@ -6,6 +6,7 @@ import { useParams, useHistory } from 'react-router';
 import styles from './Details.module.css'
 
 import { deleteOneListing } from '../../store/listing';
+import { createBooking } from '../../store/booking';
 
 import EditForm from './EditForm';
 
@@ -13,6 +14,7 @@ import Rodal from 'rodal';
 import 'rodal/lib/rodal.css';
 
 import MapOne from '../Maps/MapOne';
+
 
 const Details = () => {
     const user = useSelector(state => state.session.user)
@@ -22,6 +24,9 @@ const Details = () => {
     const dispatch = useDispatch()
     
     const [show, setShow] = useState(false)
+    const [showBooking, setShowBooking] = useState(false)
+    const [startTime, setStartTime] = useState('')
+    const [endTime, setEndTime] = useState('')
 
     useEffect(() => {
         (async function () {
@@ -47,6 +52,14 @@ const Details = () => {
         setShow(false)
     }
 
+
+    const makeBooking = async (e) => {
+        e.preventDefault()
+        await dispatch(createBooking(id, user.id, startTime, endTime))
+        window.alert('Your booking has been confirmed')
+        setStartTime('')
+        setEndTime('')
+    }
     return (
         <div>
             <ListingNavBar />
@@ -76,22 +89,26 @@ const Details = () => {
                     </div>
 
                     <div className={styles.right}>
+                    <div className={styles.rightContainer}>
                     <div>
-                    <p><b>${listing.price}</b> / Day</p>
+                    <p className={styles.listingPrice}><b>${listing.price}</b> / Day</p>
                     </div>
 
                     <div>
                     {/* <div>Check in</div> */}
-                    <input className={styles.input} type='datetime-local' placeholder='Choose a date'></input>
+                    <input onChange={(e) => setStartTime(e.target.value)} className={styles.input} type='date' placeholder='Choose a date'></input>
 
                     {/* <span>Check out</span> */}
-                    <input className={styles.input} placeholder='Choose a date' type='datetime-local'></input>
+                    <input onChange={(e) => setEndTime(e.target.value)} className={styles.input} placeholder='Choose a date' type='date'></input>
                     </div>
-
-                    <button className={styles.btn1}>Reserve this Listing</button>
+                    {startTime && endTime ? <div className={styles.pricing}>  
+                       <p>Number of Days: {(endTime.slice(8) - startTime.slice(8))}</p>
+                       Booking Price: ${(endTime.slice(8) - startTime.slice(8)) * listing.price}
+                        </div> : ''}
+                    <button onClick={makeBooking} className={styles.btn1}>Reserve this Listing</button>
                     
                     </div>
-
+                    </div>
                 </div>
 
             </div>
