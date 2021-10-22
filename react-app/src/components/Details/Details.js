@@ -22,7 +22,7 @@ const Details = () => {
     const { id } = useParams()
     const history = useHistory()
     const dispatch = useDispatch()
-    
+    const [errors, setErrors] = useState([])
     const [show, setShow] = useState(false)
     const [showBooking, setShowBooking] = useState(false)
     const [startTime, setStartTime] = useState('')
@@ -55,10 +55,21 @@ const Details = () => {
 
     const makeBooking = async (e) => {
         e.preventDefault()
+        const data = []
+        if (startTime === '') {
+            data.push('please insert a check in date')
+        }
+        if (endTime === '') {
+            data.push('please insert a checkout date')
+        }
+        setErrors(data)
+
+        if (data.length === 0) {
         await dispatch(createBooking(id, user.id, startTime, endTime))
         window.alert('Your booking has been confirmed')
         setStartTime('')
         setEndTime('')
+        }
     }
     return (
         <div>
@@ -101,10 +112,15 @@ const Details = () => {
                     {/* <span>Check out</span> */}
                     <input onChange={(e) => setEndTime(e.target.value)} className={styles.input} placeholder='Choose a date' type='date'></input>
                     </div>
-                    {startTime && endTime ? <div className={styles.pricing}>  
+                    {startTime && endTime ? <div className={styles.pricing}>
+                        
                        <p>Number of Days: {(endTime.slice(8) - startTime.slice(8))}</p>
                        Booking Price: ${(endTime.slice(8) - startTime.slice(8)) * listing.price}
                         </div> : ''}
+                        <div className={styles.errors1}>
+      {errors.map(err =>( <ul><li>{err}</li></ul>))}
+      </div>
+      
                     <button onClick={makeBooking} className={styles.btn1}>Reserve this Listing</button>
                     
                     </div>

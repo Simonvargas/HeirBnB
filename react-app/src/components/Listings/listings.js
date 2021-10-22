@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
-import ListingNavBar from '../Navigation/ListingNavBar';
+// import ListingNavBar from '../Navigation/ListingNavBar';
 import { getListings } from '../../store/listing';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from './listings.module.css'
 import { Link } from 'react-router-dom';
 import Maps from '../Maps/Maps';
+import ListingNavBar from '../Navigation/ListingNavBar';
 
 const Listings = () => {
     const dispatch = useDispatch()
@@ -13,14 +14,14 @@ const Listings = () => {
 
     useEffect(() => {
         dispatch(getListings())
-        
+
     }, [dispatch])
     
 
   return (
       <>
      
-      <ListingNavBar />
+      <ListingNavBar allListings={allListings}/>
       
       <div className={styles.overall}>
       {allListings.map(listing => {

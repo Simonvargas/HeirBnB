@@ -49,12 +49,12 @@ export const createBooking = (listingId, userId, startTime, endTime) => async (d
     return new_booking;
 }
 
-// export const getListings = () => async (dispatch) => {
-//     const res = await fetch(`/api/auth/listings`)
-//     const allListings = await res.json();
-//     dispatch(loadListing(allListings));
-//     return allListings
-//   }
+export const getBookings = () => async (dispatch) => {
+    const res = await fetch(`/api/auth/bookings`)
+    const allBookings = await res.json();
+    dispatch(loadBookings(allBookings));
+    return allBookings
+  }
 
 
 
@@ -93,8 +93,9 @@ const bookingReducer = (state = initialState, action) => {
             }
         case LOAD_BOOKING:
             const all = {...state};
-            action.listings.Listings.forEach((oneListing) => {
-                all[oneListing.id] = oneListing;
+            console.log('hi', action.bookings)
+            action.bookings.Bookings.forEach((oneBooking) => {
+                all[oneBooking.id] = oneBooking;
             });
             return all;
             // return {...state, ...action.listings}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Rodal from 'rodal';
 import 'rodal/lib/rodal.css';
 import styles from './ListingNavBar.module.css'
@@ -11,11 +11,18 @@ import {  useSelector } from "react-redux";
 import { Link } from 'react-router-dom';
 import "./searchbox.css"
 
-const ListingNavBar = () => {
+import Bookingss from '../Listings/bookingss';
+
+import { getBookings } from '../../store/booking';
+
+const ListingNavBar = ({}) => {
     const history = useHistory()
+    const dispatch = useDispatch()
     const [showModal1, setShowModal1] = useState(false);
     const [showModal2, setShowModal2] = useState(false)
     const listings = useSelector((state) => Object.values(state.listing))
+    const bookingss = useSelector((state) => Object.values(state.booking))
+    console.log('dsd', bookingss)
     
     const [ searchInput, setSearchInput ] = useState('')
     const sessionUser = useSelector(state => state.session.user)
@@ -28,6 +35,10 @@ const ListingNavBar = () => {
           if (sneakerBrand.includes(query)) return sneakerBrand.includes(query)
         })
       }
+
+      useEffect(() => {
+        dispatch(getBookings())
+      }, [dispatch])
 
     // window.addEventListener('click', e => {
     //     e.preventDefault()
@@ -58,6 +69,8 @@ const ListingNavBar = () => {
         )
       }
 
+      const [showBookings, setShowBookings] = useState(false)
+
     function show() {
         setShowModal1(true)
     }
@@ -66,7 +79,13 @@ const ListingNavBar = () => {
         setShowModal1(false)
     }
 
-    const dispatch = useDispatch()
+    function myBookings() {
+      setShowBookings(true)
+    }
+    function hideBookings() {
+      setShowBookings(false)
+    }
+
     
     const onLogout = async (e) => {
         await dispatch(logout());
@@ -88,6 +107,7 @@ const ListingNavBar = () => {
                     ></input> <i class="fas fa-search fa-lg"></i>
                 </div>
                 <div>
+              <button onClick={myBookings} className={styles.btn4}>My bookings</button>
               <button className={styles.btn3} onClick={show}>Host a spot</button>
 
               <Rodal closeOnEsc={true} clasName={styles.ro} showCloseButton={false} animation='zoom' visible={showModal1} onClose={hide}>
@@ -102,9 +122,16 @@ const ListingNavBar = () => {
               </div>
             </div>
 
+            <Rodal closeOnEsc={true} className={styles.ro} showCloseButton={false} animation='zoom' visible={showBookings} onClose={hideBookings}>
+            <div className={styles.rodal1}>
+              <Bookingss  setShowBookings={setShowBookings} showBookings={showBookings} bookingss={bookingss}/>
+            </div>
+          </Rodal>
+
         {searchbar}
         </nav>
     );
 }
+
 
 export default ListingNavBar;

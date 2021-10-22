@@ -123,3 +123,31 @@ background-image: linear-gradient(315deg, #eb4511 0%, #b02e0c 74%);
 }
 
 
+.btn4 {
+    position: relative;
+    border:greenyellow;
+    background-color: #ffffff;
+    background-image: linear-gradient(315deg, #ffffff 0%, #d7e1ec 74%);
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    width: 130px;
+    transition: all ease 0.3s;
+    height: 25px;
+    margin: 5px;
+        transform: translatey(0px);
+      animation: float 6s ease-in-out infinite;
+}
+
+.btn4:hover {
+    color: #ffffff !important;
+    background-color: #eb4511;
+    background-image: linear-gradient(315deg, #eb4511 0%, #b02e0c 74%);
+    transition: all 0.4s ease 0s;  
+}
+
+.rodal1 {
+    width: 400px;
+    height: 250px;
+    overflow-x: auto;
+}
