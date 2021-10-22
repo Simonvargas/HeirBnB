@@ -11,6 +11,7 @@
     border: 1px solid black;
     text-align: left;
     overflow: scroll;
+    z-index: 7;
     height: 200px;
     background-color: white;
 }
