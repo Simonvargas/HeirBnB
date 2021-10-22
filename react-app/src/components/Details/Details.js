@@ -41,7 +41,7 @@ const Details = () => {
 
      async function deleteOne() {
     await dispatch(deleteOneListing(id))
-    history.push('/')
+    // history.push('/')
     }
 
     function showForm() {
@@ -81,6 +81,7 @@ const Details = () => {
                <div className={styles.firstContent} > <h1>{listing.title}</h1>
                {user.id == listing.user_id ? <div>
                    <button onClick={deleteOne} className={styles.btn2}>Delete Listing</button>
+                   
                    <button onClick={showForm} className={styles.btn2}>Update</button>
 
                </div> : ''}

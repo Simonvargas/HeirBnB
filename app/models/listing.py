@@ -16,6 +16,8 @@ class Listing(db.Model):
     longitude = db.Column(db.Float, nullable=True)
     description = db.Column(db.String, nullable=False)
    
+    funds = db.relationship('Booking', backref='listings', cascade="all, delete")
+
 
     # users = db.relationship("User", backref="listings")
     # images = db.relationship("Image", back_populates="listings")

@@ -11,7 +11,7 @@ import {  useSelector } from "react-redux";
 import { Link } from 'react-router-dom';
 import "./searchbox.css"
 
-import Bookingss from '../Listings/bookingss';
+// import Bookingss from '../Listings/bookingss';
 
 import { getBookings } from '../../store/booking';
 
@@ -107,7 +107,7 @@ const ListingNavBar = ({}) => {
                     ></input> <i class="fas fa-search fa-lg"></i>
                 </div>
                 <div>
-              <button onClick={myBookings} className={styles.btn4}>My bookings</button>
+              {/* <button onClick={myBookings} className={styles.btn4}>My bookings</button> */}
               <button className={styles.btn3} onClick={show}>Host a spot</button>
 
               <Rodal closeOnEsc={true} clasName={styles.ro} showCloseButton={false} animation='zoom' visible={showModal1} onClose={hide}>
@@ -122,11 +122,11 @@ const ListingNavBar = ({}) => {
               </div>
             </div>
 
-            <Rodal closeOnEsc={true} className={styles.ro} showCloseButton={false} animation='zoom' visible={showBookings} onClose={hideBookings}>
+            {/* <Rodal closeOnEsc={true} className={styles.ro} showCloseButton={false} animation='zoom' visible={showBookings} onClose={hideBookings}>
             <div className={styles.rodal1}>
               <Bookingss  setShowBookings={setShowBookings} showBookings={showBookings} bookingss={bookingss}/>
             </div>
-          </Rodal>
+          </Rodal> */}
 
         {searchbar}
         </nav>

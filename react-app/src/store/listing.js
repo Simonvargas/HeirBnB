@@ -73,6 +73,7 @@ export const updateOneListing = (user_id, title, price, address, city, state, co
 
 
 export const deleteOneListing = (id) => async (dispatch) => {
+    console.log('he')
     const res = await fetch(`/api/listings/delete/${id}`, {
         method : 'DELETE',
     });
@@ -111,7 +112,7 @@ const ListingReducer = (state = initialState, action) => {
             }
         case DELETE_LISTING:{
            const newState = {...state}
-        //    console.log('deleted12', newState[action.ProjectId] )
+           console.log('deleted12', newState[action.listingId] )
            delete newState[action.listingId];
            return newState
         }
