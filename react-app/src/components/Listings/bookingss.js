@@ -1,4 +1,4 @@
-// import React, {useEffect} from 'react';
+// import React, {useEffect, useState} from 'react';
 // import { useSelector, useDispatch} from 'react-redux'
 // import { getListings } from '../../store/listing';
 // import { Link } from 'react-router-dom';
@@ -10,15 +10,22 @@
 //     const allListings = useSelector((state) => Object.values(state.listing))
 //     const dispatch = useDispatch()
 //     const bookingss = useSelector((state) => Object.values(state.booking))
+//     const [allBooks, setAllBooks] = useState([])
 
 //     useEffect(() => {
-//         dispatch(getListings())
-//         dispatch(getBookings())
-//       }, [dispatch])
+//         (async function () {
+//         const res = await fetch(`/api/auth/one`)
+//         const allBookings = await res.json();
+//         setAllBooks(allBookings)
+//         })()
+//       }, [])
+
+//       console.log('here', allBooks.booking)
+//       const booky = allBooks.booking
     
 //   return (
 //      <div className={styles.container12}>
-//          {bookingss.map((book) => {
+//          {/* {bookingss.map((book) => {
 //             for (let i = 0; i < allListings.length; i++) {
 //                 if (user.id === book.userId) {
 //                     return (
@@ -30,7 +37,16 @@
 //                     )
 //                 }
 //             }
+//          })} */}
+
+//          {booky.map(book =>{
+//              return(
+//                  <div>
+//                      {book}
+//                      </div>
+//              )
 //          })}
+     
 //      </div>
 //   )
 // };

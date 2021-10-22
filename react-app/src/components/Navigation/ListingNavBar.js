@@ -11,7 +11,7 @@ import {  useSelector } from "react-redux";
 import { Link } from 'react-router-dom';
 import "./searchbox.css"
 
-// import Bookingss from '../Listings/bookingss';
+import Bookingss from '../Listings/bookingss';
 
 import { getBookings } from '../../store/booking';
 
@@ -22,7 +22,7 @@ const ListingNavBar = ({}) => {
     const [showModal2, setShowModal2] = useState(false)
     const listings = useSelector((state) => Object.values(state.listing))
     const bookingss = useSelector((state) => Object.values(state.booking))
-    console.log('dsd', bookingss)
+    console.log('', bookingss)
     
     const [ searchInput, setSearchInput ] = useState('')
     const sessionUser = useSelector(state => state.session.user)
@@ -121,8 +121,8 @@ const ListingNavBar = ({}) => {
               {/* <i class="fas fa-id-badge"></i> */}
               </div>
             </div>
-
-            {/* <Rodal closeOnEsc={true} className={styles.ro} showCloseButton={false} animation='zoom' visible={showBookings} onClose={hideBookings}>
+{/* 
+            <Rodal closeOnEsc={true} className={styles.ro} showCloseButton={false} animation='zoom' visible={showBookings} onClose={hideBookings}>
             <div className={styles.rodal1}>
               <Bookingss  setShowBookings={setShowBookings} showBookings={showBookings} bookingss={bookingss}/>
             </div>

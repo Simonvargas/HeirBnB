@@ -91,3 +91,10 @@ def get_projects():
 def get_bookings():
     bookings = Booking.query.all()
     return {'Bookings' : [booking.to_dict() for booking in bookings]}
+
+@auth_routes.route('/one', methods=['GET'])
+def watchs():
+    # bookings =  Listing.query.filter((Booking.userId == current_user.id) & (Listing.id == Booking.listingId)).all()
+    bookings = Booking.query.filter((Booking.userId == current_user.id))
+    listings= Listing.query.join(bookings).filter(Booking.userId == current_user.id).all()
+    return {'booking': [booking.to_dict() for booking in bookings], 'sneax': [ listing.to_dict() for listing in listings ],}
