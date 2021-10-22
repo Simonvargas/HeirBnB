@@ -69,8 +69,11 @@ const Details = () => {
         window.alert('Your booking has been confirmed')
         setStartTime('')
         setEndTime('')
+        setErrors([])
         }
     }
+
+   
     return (
         <div>
             <ListingNavBar />
@@ -107,10 +110,10 @@ const Details = () => {
 
                     <div>
                     {/* <div>Check in</div> */}
-                    <input onChange={(e) => setStartTime(e.target.value)} className={styles.input} type='date' placeholder='Choose a date'></input>
+                    <input onChange={(e) => setStartTime(e.target.value)} id='one' className={`${styles.input} ${styles.input1}`} type='date' placeholder='Choose a date'></input>
 
                     {/* <span>Check out</span> */}
-                    <input onChange={(e) => setEndTime(e.target.value)} className={styles.input} placeholder='Choose a date' type='date'></input>
+                    <input onChange={(e) => setEndTime(e.target.value)} id='two' className={styles.input} placeholder='Choose a date' type='date'></input>
                     </div>
                     {startTime && endTime ? <div className={styles.pricing}>
                         
