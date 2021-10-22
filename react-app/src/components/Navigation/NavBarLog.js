@@ -44,7 +44,7 @@ const NavBarSplash = () => {
             </div>
           </Rodal>
 
-             <button className={styles.btn2}> <NavLink className={styles.link} to='/listings'>Listings</NavLink></button>
+             <button className={styles.btn2}> <NavLink className={styles.link} to='/'>Listings</NavLink></button>
               <button className={styles.btn2} onClick={onLogout}>Logout</button>
               </div>
             </div>

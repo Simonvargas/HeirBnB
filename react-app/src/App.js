@@ -35,17 +35,11 @@ function App() {
           <Home />
         </Route>
         
-        <ProtectedRoute path='/listings'>
-        <Listings />
-        </ProtectedRoute>
+       
 
         <ProtectedRoute path='/listing/:id'>
         <Details />
         </ProtectedRoute>
-
-        <Route to='/test'>
-          <input type='file' />
-        </Route>
 
       </Switch>
 

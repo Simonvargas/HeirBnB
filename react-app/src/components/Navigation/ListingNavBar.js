@@ -76,7 +76,7 @@ const ListingNavBar = () => {
         <nav className={styles.nav}>
             <div className={styles.btnContainer}>
                 <div>
-                <NavLink style={{color : 'black', textDecoration: 'none'}} to='/listings' ><h2>HeirBnB</h2></NavLink>
+                <NavLink style={{color : 'black', textDecoration: 'none'}} to='/' ><h2>HeirBnB</h2></NavLink>
                 </div>
                 <div>
                     <input 
@@ -96,7 +96,7 @@ const ListingNavBar = () => {
             </div>
           </Rodal>
 
-             <button className={styles.btn2}> <NavLink className={styles.link} to='/listings'>Listings</NavLink></button>
+             <button className={styles.btn2}> <NavLink className={styles.link} to='/'>Listings</NavLink></button>
               <Link to='/'><button className={styles.btn2} onClick={onLogout}>Logout</button></Link>
               {/* <i class="fas fa-id-badge"></i> */}
               </div>

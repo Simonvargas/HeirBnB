@@ -13,14 +13,15 @@ const Listings = () => {
 
     useEffect(() => {
         dispatch(getListings())
+        
     }, [dispatch])
     
-    console.log(allListings)
+
   return (
       <>
      
       <ListingNavBar />
-      {/* <Maps /> */}
+      
       <div className={styles.overall}>
       {allListings.map(listing => {
           return (

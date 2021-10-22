@@ -51,7 +51,7 @@ export const createListing = (user_id, title, price, address, city, state, count
 }
 
 export const getListings = () => async (dispatch) => {
-    const res = await fetch(`/api/listings`)
+    const res = await fetch(`/api/auth/listings`)
     const allListings = await res.json();
     dispatch(loadListing(allListings));
     return allListings
