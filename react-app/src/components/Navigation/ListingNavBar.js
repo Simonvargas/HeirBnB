@@ -30,7 +30,7 @@ const ListingNavBar = ({}) => {
     const filter = (place, query) => {
         return place.filter((spot) => {
           const sneakerName = spot.title.toLowerCase()
-          const sneakerBrand = spot.city.toLowerCase()
+          const sneakerBrand = spot.state.toLowerCase()
           if (sneakerName.includes(query)) return sneakerName.includes(query)
           if (sneakerBrand.includes(query)) return sneakerBrand.includes(query)
         })
@@ -100,7 +100,7 @@ const ListingNavBar = ({}) => {
                 <div>
                     <input 
                     className={styles.input} 
-                    placeholder='Search for a spot'
+                    placeholder='Search for by State or Title'
                     value={searchInput}
                     // className={styles.searchBar}
                     onChange={(e) => setSearchInput((e.target.value).toLowerCase())}

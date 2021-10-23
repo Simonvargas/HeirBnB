@@ -29,15 +29,7 @@ const Maps = ()  => {
   };
   
 
-  Geocode.fromAddress("Eiffel Tower").then(
-    (response) => {
-      const { lat, lng } = response.results[0].geometry.location;
-      console.log('LAT', lat, lng);
-    },
-    (error) => {
-      console.error(error);
-    }
-  );
+  console.log('rproce', process.env.REACT_APP_API_MAP)
     
     const Marker = ({ lat, lng }) => (
       <div className="mapMarker">

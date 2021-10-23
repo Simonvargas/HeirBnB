@@ -29,15 +29,6 @@ const MapOne = ({listing})  => {
   };
   
 
-  Geocode.fromAddress("Eiffel Tower").then(
-    (response) => {
-      const { lat, lng } = response.results[0].geometry.location;
-      console.log('LAT', lat, lng);
-    },
-    (error) => {
-      console.error(error);
-    }
-  );
 
     const Marker = ({ lat, lng }) => (
       <div className="mapMarker">

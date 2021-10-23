@@ -18,6 +18,8 @@ function EditForm({ setShow, listing }) {
 
     const [errors, setErrors] = useState([])
 
+    const [url, setUrl] = useState('')
+    const [disableState, setDisableState] = useState(false)
     
     const dispatch = useDispatch();
     const { id } = useParams() 
@@ -49,12 +51,48 @@ function EditForm({ setShow, listing }) {
         }
         setErrors(data)
         if (data.length === 0) {
-        await dispatch(updateOneListing(user_id, title, price, address, city, state, country, image, description, id))
+          let image_url = url;
+          console.log(url)
+          if (url !== 'https://i.imgur.com/BPOYKBx.png') {
+            const formData = new FormData()
+            formData.append('image', image)
+            const res = await fetch('/api/images/', {
+              method: "POST",
+              body: formData,
+            });
+            const x = await res.json()
+            console.log('res', x)
+            image_url = x['url']
+            
+          }
+        await dispatch(updateOneListing(user_id, title, price, address, city, state, country, image_url, description, id))
         setShow(false)
         
         }
 
    }
+   const updateImage = (e) => {
+    const file = e.target.files[0];
+
+    if (!file) {
+        setUrl(url);
+        setImage(image);
+
+    } else {
+        const ext = file.type.split('/')
+        const extensions = "pdf, png, jpg, jpeg, gif"
+        if (extensions.includes(ext[1])) {
+            setUrl(URL.createObjectURL(file))
+            setImage(file);
+            setDisableState(true);
+
+        } else {
+            setErrors({filetype: 'Filetype not supported, please upload a pdf, png, jpg, jpeg, or gif file.'})
+        }
+    }
+  }
+
+   
   return  (
     <div className={styles.container}>
     
@@ -70,7 +108,21 @@ function EditForm({ setShow, listing }) {
     </div>
       <h2 className={styles.h2}>Host a Spot</h2>
     <div className={styles.container3}>
-      
+    <div className='upload-container'>
+        <form>
+          <div>Upload your spot's image!</div>
+          <input
+          className='file'
+            type='file'
+            accept="image/png, image/gif, image/jpeg, image/pdf, image/jpg"
+            id="imgInp"
+            onChange={updateImage}
+            placeholder={image}
+            // disabled={disableState}
+            
+          />
+        </form>
+        </div>
     <input
     className={styles.input}
     type='hidden'
@@ -116,7 +168,7 @@ function EditForm({ setShow, listing }) {
   <input 
     placeholder='Image Url'
     className={styles.input}
-    type='text'
+    type='hidden'
     value={image}
     onChange={(e) => setImage(e.target.value)}/>
  
