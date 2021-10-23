@@ -3,7 +3,9 @@
 </p>
 
 # HeirBnB
-HeirBnB is a 1 full crud application showcasing AWS and Google Maps integration. It is a fullstack React App made with a Redux state manager and a backend using Python, Flask, SQL-Alchemy, and PostgresSQL and many other technologies. 
+HeirBnB is a 1 full crud application showcasing AWS and Google Maps integration.
+<br></br> 
+It is a fullstack React App made with a Redux state manager and a backend using Python, Flask, SQL-Alchemy, and PostgresSQL and many other technologies. 
 
 * View the <a href='https://heribnb.herokuapp.com/'>HeirBnB</a> App Live
 
