@@ -100,7 +100,7 @@ const ListingNavBar = ({}) => {
                 <div>
                     <input 
                     className={styles.input} 
-                    placeholder='Search for by State or Title'
+                    placeholder='Search for a spot by city or title'
                     value={searchInput}
                     // className={styles.searchBar}
                     onChange={(e) => setSearchInput((e.target.value).toLowerCase())}
