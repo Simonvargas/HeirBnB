@@ -36,7 +36,7 @@ Upload an image when either creating a listing or updating an existing one
 
 ### Google Maps integration
 View where your listing is located via a map either on the feed page or the listing page
-![map](./readme-assets/images/.map.jpg)
+![map](./readme-assets/images/map.jpg)
 
 
 ### View & Register
@@ -44,7 +44,7 @@ View each listing details and register by specifying the dates. Price will be ca
 ![register](./readme-assets/images/register.jpg)
 ### Splash Page
 Welcome to the splash page! Log in or sign up
-![splash](./readme-assets/images/splash.png)
+![splash](./readme-assets/images/splash.jpg)
 
 
 ## Installation
