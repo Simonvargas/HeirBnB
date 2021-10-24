@@ -53,7 +53,7 @@ function EditForm({ setShow, listing }) {
         if (data.length === 0) {
           let image_url = url;
           console.log(url)
-          if (url !== 'https://i.imgur.com/BPOYKBx.png') {
+          if (url) {
             const formData = new FormData()
             formData.append('image', image)
             const res = await fetch('/api/images/', {
@@ -63,10 +63,13 @@ function EditForm({ setShow, listing }) {
             const x = await res.json()
             console.log('res', x)
             image_url = x['url']
-            
-          }
-        await dispatch(updateOneListing(user_id, title, price, address, city, state, country, image_url, description, id))
+            await dispatch(updateOneListing(user_id, title, price, address, city, state, country, image_url, description, id))
+            setShow(false)
+
+          } else {
+        await dispatch(updateOneListing(user_id, title, price, address, city, state, country, image, description, id))
         setShow(false)
+          }
         
         }
 
