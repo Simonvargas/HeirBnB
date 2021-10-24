@@ -39,6 +39,8 @@ const Listings = () => {
           )
       })}
       </div>
+
+      
       <Maps />
        </>
   )

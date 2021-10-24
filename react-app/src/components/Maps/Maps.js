@@ -39,6 +39,7 @@ const Maps = ()  => {
      
     return (
       <div className='googleMap'>
+        <div style={{color: 'gray', textAlign: 'center'}}>disclaimer: Billing on google cloud must be enable for map not to be grayed out. It is still functional</div>
         <GoogleMapReact
           bootstrapURLKeys={{ key: process.env.REACT_APP_API_MAP }}
           defaultCenter={newYork.center}
