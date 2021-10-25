@@ -71,13 +71,13 @@ export const getBookings = () => async (dispatch) => {
 // }
 
 
-// export const deleteOneListing = (id) => async (dispatch) => {
-//     const res = await fetch(`/api/listings/delete/${id}`, {
-//         method : 'DELETE',
-//     });
-//     dispatch(deleteListing(id))
-//     return res
-// }
+export const deleteOneBooking = (id) => async (dispatch) => {
+    const res = await fetch(`/api/bookings/delete/${id}`, {
+        method : 'DELETE',
+    });
+    dispatch(deleteBooking(id))
+    return res
+}
 
 
 const initialState = {
@@ -93,7 +93,6 @@ const bookingReducer = (state = initialState, action) => {
             }
         case LOAD_BOOKING:
             const all = {...state};
-            console.log('hi', action.bookings)
             action.bookings.Bookings.forEach((oneBooking) => {
                 all[oneBooking.id] = oneBooking;
             });

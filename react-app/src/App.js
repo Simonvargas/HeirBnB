@@ -9,7 +9,7 @@ import { authenticate } from './store/session';
 import Home from './components/Home/Home';
 import Listings from './components/Listings/listings';
 import Details from './components/Details/Details';
-
+import Bookingss from './components/Listings/bookingss';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -35,9 +35,11 @@ function App() {
           <Home />
         </Route>
         
-       
+       <Route path='/profile' exact={true}>
+        <Bookingss />
+       </Route>
 
-        <ProtectedRoute path='/listing/:id'>
+        <ProtectedRoute path='/listing/:id' exact={true}>
         <Details />
         </ProtectedRoute>
 

@@ -24,3 +24,12 @@ def create_project():
         db.session.commit()
         return booking.to_dict()
     return {'error' : 'Invalid request'}
+
+
+@booking_routes.route('/delete/<int:id>', methods=['DELETE'])
+@login_required
+def delete_project(id):
+    booking = Booking.query.get(id)
+    db.session.delete(booking)
+    db.session.commit()
+    return {}, 200

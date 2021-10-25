@@ -1,3 +1,4 @@
+from sqlalchemy.orm import backref
 from .db import db
 
 
@@ -10,15 +11,21 @@ class Booking(db.Model):
     startTime = db.Column(db.Date)
     endTime = db.Column(db.Date)
 
-    # users = db.relationship("User", backref="bookings")
-    # images = db.relationship("Listing", back_populates="listings")
-
+    associatedListing = db.relationship('Listing', backref='books')
+    
     def to_dict(self):
-        return{
+        
+        return {
             'id': self.id,
             'listingId': self.listingId,
             'userId': self.userId,
             'startTime': self.startTime,
             'endTime': self.endTime,
+            'title': self.associatedListing.title,
+            'city': self.associatedListing.city,
+            'state': self.associatedListing.state,
+            'country': self.associatedListing.country,
+            'price': self.associatedListing.price,
+            'address': self.associatedListing.address,
             
         }

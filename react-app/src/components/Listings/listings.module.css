@@ -78,4 +78,38 @@
 
 .container12 {
     overflow: auto;
+    width: 100%;
+    height: 100vh;
+    flex-direction: column;
+    background-image: url('https://i.imgur.com/F2yUWi1.jpg');
+    background-size:     cover;                      /* <------ */
+    background-repeat:   no-repeat;
+    background-position: center center; 
+}
+
+.container13 {
+    overflow: auto;  
+    width: 50%;
+    height: 70%;
+    margin: auto;
+    background-color: white;;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.containerbook{
+    display: inline-block;
+    width: 90%;
+    text-align: center;
+}
+
+.items {
+    position: relative;
+    bottom: 22px;
+}
+.items:hover {
+    color: red;
+}
+
+.b1 {
+    float: left;
 }
