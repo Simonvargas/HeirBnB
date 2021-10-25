@@ -31,8 +31,8 @@ const ListingNavBar = ({}) => {
         return place.filter((spot) => {
           const sneakerName = spot.title.toLowerCase()
           const sneakerBrand = spot.city.toLowerCase()
-          if (sneakerName.includes(query)) return sneakerName.includes(query)
-          if (sneakerBrand.includes(query)) return sneakerBrand.includes(query)
+          if (sneakerName.includes(query)) return sneakerName.includes(query) + spot.city
+          if (sneakerBrand.includes(query)) return sneakerBrand.includes(query) 
         })
       }
 
@@ -57,7 +57,7 @@ const ListingNavBar = ({}) => {
                   {lists.map(list => (
                       <Link className='search-link' to={`/listing/${list.id}`}>
                         <div className='searchfield-container'>
-                          <p  className='search-link'>{list.title}</p>
+                          <p  className='search-link'>{list.title}  <span style={{color: 'lightgray', float: 'right'}}>{list.city}, {list.state}</span></p>
                         </div>
                       </Link>
                   ))}
