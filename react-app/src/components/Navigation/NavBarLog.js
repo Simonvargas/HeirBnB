@@ -30,7 +30,7 @@ const NavBarSplash = () => {
         <nav className={styles.nav}>
             <div className={styles.btnContainer}>
                 <div>
-                    <NavLink style={{color : 'black', textDecoration: 'none'}} to='/listings' ><h2>HeirBnB</h2></NavLink>
+                    <NavLink style={{color : 'black', textDecoration: 'none'}} to='/' ><h2>HeirBnB</h2></NavLink>
                 </div>
                 <div>
                     <h2>Find Your Next Adventure</h2>
