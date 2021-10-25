@@ -37,7 +37,7 @@ const Details = () => {
                 setListing(oneListing)
             }
         })()
-    }, [id, show])
+    }, [id, show, startTime, endTime])
 
      async function deleteOne() {
     await dispatch(deleteOneListing(id))
@@ -52,6 +52,10 @@ const Details = () => {
         setShow(false)
     }
 
+    const date1 = new Date(startTime)
+    const date2 = new Date(endTime)
+    const diffTime = Math.abs(date2 - date1);
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
 
     const makeBooking = async (e) => {
         e.preventDefault()
@@ -62,6 +66,9 @@ const Details = () => {
         if (endTime === '') {
             data.push('please insert a checkout date')
         }
+        if (date1 > date2) {
+            data.push('check in cannot be after checkout')
+        }
         setErrors(data)
 
         if (data.length === 0) {
@@ -70,9 +77,11 @@ const Details = () => {
         setStartTime('')
         setEndTime('')
         setErrors([])
+        document.getElementById('one').value = ''
+        document.getElementById('two').value = ''
+         
         }
     }
-
    
     return (
         <div>
@@ -116,10 +125,10 @@ const Details = () => {
                     {/* <span>Check out</span> */}
                     <input onChange={(e) => setEndTime(e.target.value)} id='two' className={styles.input} placeholder='Choose a date' type='date'></input>
                     </div>
-                    {startTime && endTime ? <div className={styles.pricing}>
+                    {(startTime && endTime) && date2 > date1 ? <div className={styles.pricing}>
                         
-                       <p>Number of Days: {(endTime.slice(8) - startTime.slice(8))}</p>
-                       Booking Price: ${(endTime.slice(8) - startTime.slice(8)) * listing.price}
+                       <p>Number of Days: {diffDays}</p>
+                       Booking Price: ${diffDays * listing.price}
                         </div> : ''}
                         <div className={styles.errors1}>
       {errors.map(err =>( <ul><li>{err}</li></ul>))}

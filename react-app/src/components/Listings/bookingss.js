@@ -24,12 +24,12 @@ const Bookingss = ({   }) => {
       }, [deleteBooking])
       const listing = Object.values(allBooks).flat()
       const books1 = allBooks?.booking?.map(book => book)
-      console.log('list', bookingss)
 
       async function deleteOne(e) {
           await dispatch(deleteOneBooking(e.target.id))
             setDeleteBooking(!deleteBooking)
       }
+     
 
   return (
       <div>
@@ -49,7 +49,7 @@ const Bookingss = ({   }) => {
                         <Link style={{textDecoration: 'none', color: 'black', zIndex: '1'}} to={`listing/${book.listingId}`}>
                         <div className={styles.containerbook}>
                             
-                           <b className={styles.b1} >({idx + 1})</b> {book.title}  | {(book.startTime).slice(5, 17)} - {(book.endTime).slice(5, 17)} | {book.city}, {book.state}, {book.country}  
+                           <b className={styles.b1} >({idx + 1})</b> {book.title}  | {(book.startTime).slice(5, 17)} - {(book.endTime).slice(5, 17)} | {book.city}, {book.state}, {book.country} | Total price: ${Math.ceil(Math.abs((new Date(book.endTime)) - (new Date(book.startTime))) / (1000 * 60 * 60 * 24)) * book.price} 
                             </div>
                             
                             </Link>
