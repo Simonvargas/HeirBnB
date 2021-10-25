@@ -60,6 +60,9 @@ const Details = () => {
     const makeBooking = async (e) => {
         e.preventDefault()
         const data = []
+        if (user.id === listing.user_id) {
+            data.push('You cannot reserve your own listing')
+        }
         if (startTime === '') {
             data.push('please insert a check in date')
         }
